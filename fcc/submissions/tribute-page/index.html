@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <title>Tribute Page - FCC Submission - michael-tillmanns.de</title>
     <style type="text/css">
+      body {
+        font-family: 'Roboto Mono', monospace;
+      }
       #image {
         max-width: 100%;
         width: auto;
@@ -11,12 +17,24 @@
         margin: 0 auto;
       }
       #main {
+        padding: 10px;
         max-width: 100%;
         width: 700px;
         margin: 20px auto;
         border: 1px solid rgba(0,0,0,.2);
         box-shadow: 0 10px 15px rgba(0,0,0,.15);
         border-radius: 10px;
+      }
+      a {
+        text-decoration: none;
+        border: 1px solid #000;
+      }
+      a:visited {
+        color: #000;
+      }
+      a:hover {
+        background-color: #000;
+        color: #fff;
       }
     </style>
   </head>
