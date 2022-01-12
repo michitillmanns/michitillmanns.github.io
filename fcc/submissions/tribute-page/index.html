@@ -2,9 +2,40 @@
 <html lang="en">
   <head>
     <title>Tribute Page - FCC Submission - michael-tillmanns.de</title>
+    <style type="text/css">
+      #image-div {
+        display: flex;
+      }
+      #image {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        justify-self: center;
+      }
+    </style>
   </head>
   <body>
-    
+    <div id="main">
+      
+      <header>
+        <h1>Albert Einstein</h1>
+      </header>
+      
+      <main>
+        <div id="img-div">
+          <img id="image" src="albert-einstein-1933340__480.webp" alt="Albert Einstein">
+          <p id="img-caption">This image is showing Albert Einstein.</p>
+        </div>
+        
+        <p id="tribute-info">
+          Albert Einstein was a German-born theoretical physicist, widely acknowledged to be one of the greatest physicists of all time.
+          Einstein is best known for developing the theory of relativity, but he also made important contributions to the development of the theory of quantum mechanics.
+          Relativity and quantum mechanics are together the two pillars of modern physics.
+          <a id="tribute-link" href="https://en.wikipedia.org/wiki/Albert_Einstein" target="_blank">More information about Albert Einstein</a>
+        </p>
+      </main>
+      
+    </div>
     
     <!-- FCC testing script -->
     <script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
