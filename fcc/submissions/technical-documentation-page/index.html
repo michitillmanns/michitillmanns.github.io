@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <title>Technical Documentation Page - FCC Submission - michael-tillmanns.de</title>
+    <style type="text/css">
+      html, body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+        line-height: 25px;
+      }
+      
+      main {
+        padding: 10px 20px;
+        margin-left: 400px;
+        width: calc(100% - 440px);
+      }
+      
+      main h1, main h2, main h3 {
+        color: #24A19C;
+      }
+      
+      mark, code {
+        font-family: 'Source Code Pro', monospace;
+      }
+      
+      .code {
+        max-width: 100%;
+        border: 1px solid rgba(0,0,0,.2);
+        overflow-x: auto;
+        white-space: nowrap;
+        border-radius: 5px;
+        background: #FAEEE7;
+        padding: 10px;
+        color: #325288;
+      }
+      
+      .code code {
+        white-space: nowrap;
+      }
+      
+      mark {
+        border: 1px solid rgba(0,0,0,.2);
+        background: #FAEEE7;
+        color: #D96098;
+        padding: 5px;
+        font-size: 12px;
+        border-radius: 5px;
+      }
+      
+      nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 400px;
+        height: 100%;
+        background: #24A19C;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      nav h1, nav p {
+        padding: 0;
+        margin: 5px;
+      }
+      
+      nav header {
+        padding: 20px;
+      }
+      
+      nav hr {
+        width: 100%;
+        border: none;
+        height: 1px;
+        background: #fff;
+      }
+      
+      nav ul {
+        list-style-type: none;
+        padding: 20px 0;
+        margin: 0;
+      }
+      
+      nav ul a {
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      nav ul a li {
+        padding: 10px 20px;
+      }
+      
+      nav ul a li:hover {
+        background: rgba(0,0,0,.2);
+      }
+      
+      @media only screen and (max-width: 768px) {
+        nav {
+          display: none;
+        }
+        
+        main {
+          margin-left: 0;
+          width: calc(100% - 40px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+  
+    <!-- 
+      COPYRIGHT INFORMATION
+      The source of the content of this page was obtained from https://docs.dimensions.ai/
+    -->
+    
+    <nav id="navbar">
+      <header>
+        <h1>The Dimensions Search Language</h1>
+        <p>The DSL enables users to perform analytics on the Dimensions database.</p>
+      </header>
+      <hr>
+      <ul>
+        <a class="nav-link" href="#GETTING_STARTED_CHECKLIST"><li>Getting Started Checklist</li></a>
+        <a class="nav-link" href="#A_TOUR_OF_THE_DSL"><li>A Tour of the DSL</li></a>
+        <a class="nav-link" href="#QUERY_SYNTAX"><li>Query Syntax</li></a>
+        <a class="nav-link" href="#FUNCTIONS_SYNTAX"><li>Functions Syntax</li></a>
+        <a class="nav-link" href="#EXPERT_IDENTIFICATION"><li>Expert Identification</li></a>
+      </ul>
+    </nav>
+  
+    <main id="main-doc">
+    
+      <section id="GETTING_STARTED_CHECKLIST" class="main-section">
+      
+        <header>
+          <h1>Getting Started Checklist</h1>
+        </header>
+        
+        <p>If you are new to the Dimensions Search Language and the Dimensions Analytics API, here is a list of useful things to get you started.</p>
+        
+        <ol>
+          <li>
+            <strong>Verify your connection.</strong><br>
+            Ensure you can access the API using your personal credentials, via one of the methods described in the api section.
+          </li>
+          <li>
+            <strong>Install the open source Dimcli library.</strong><br>
+            Dimcli is a command-line tool and Python library that allows to create DSL queries interactively via an autocomplete mechanism, hence making it easier to learn the language and discover new features.
+          </li>
+          <li>
+            <strong>Do the tutorial.</strong><br>
+            The Tour of the DSL section introduces the most important DSL topics gradually and with straightforward examples, so it is a great way to get a feeling for what the API has to offer.
+          </li>
+          <li>
+            <strong>Explore the data sources model.</strong><br>
+            The Data Sources section includes detailed information about all the main record types available to query, their properties and cross-links.
+          </li>
+          <li>
+            <strong>Try out real-world applications.</strong><br>
+            The Dimensions API Lab is an open source repository of Jupyter notebooks demonstrating how to use the DSL to carry out different scholarly analytics tasks, e.g. building a citation network, doing a journals competitors analysis, tracking researchers’ affiliations over time etc..
+          </li>
+          <li>
+            <strong>Join the community forum.</strong><br>
+            The API Users Forum is the official channel for versions announcements, news, lessons learned and best practices about the Dimensions Analytics API.
+          </li>
+        </ol>
+      
+      </section>
+    
+      <section id="A_TOUR_OF_THE_DSL" class="main-section">
+        
+        <header>
+          <h1>A Tour of the DSL</h1>
+        </header>
+        
+        <p>The Dimensions Search Language (DSL) allows you to write concise expressions, called queries, to search and retrieve information from the Dimensions dataset.</p>
+        
+        <h2>A simple query</h2>
+        <p>Let’s start with a simple query example. One of the most basic and commonly-used types of questions we could ask about Dimensions data is something like, “Which are the most recent scholarly works related to a specific research topic?”.</p>
+        <p>We can answer such a question with a query like this, which asks: “Which are the most recent scientific publications related to malaria?”</p>
+        <div class="code">
+          <code>search publications for "malaria" return publications</code>
+        </div>
+        <p>Whitespace is ignored in DSL queries, so feel free to use line breaks and indentation as you wish. The following query is exactly the same as the query above:</p>
+        <div class="code">
+          <code>
+            search publications<br>
+            &nbsp;&nbsp;for "malaria"<br>
+            return publications
+          </code>
+        </div>
+        
+      </section>
+    
+      <section id="QUERY_SYNTAX" class="main-section">
+      
+        <header>
+          <h1>Query Syntax</h1>
+        </header>
+        
+        <p>The DSL aims to capture the type of interaction with Dimensions data that users are accustomed to performing graphically via the web application, and enable web app developers, power users, and others to carry out such interactions by writing query statements in a syntax loosely inspired by SQL but particularly suited to our specific domain and data organization.</p>
+        
+        <h2>Basic query structure</h2>
+        <p>DSL queries consist of two required components: a <mark>search</mark> phrase that indicates the scientific records to be searched, and one or more <mark>return</mark> phrases which specify the contents and structure of the desired results.</p>
+        <p>The simplest valid DSL query is of the form:</p>
+        <div class="code">
+          <code>
+            search&nbsp;&nbsp;grants&nbsp;&nbsp;return&nbsp;&nbsp;grants<br>
+            ---------------|---------------<br>
+            search &lt;source&gt;|return &lt;result&gt;
+          </code>
+        </div>
+        <p>A more useful query might also make use of the optional <mark>for</mark> and <mark>where</mark> phrases to limit the set of records returned.</p>
+        <div class="code">
+          <code>
+            search&nbsp;&nbsp;grants&nbsp;&nbsp;for "lung cancer" where active_year=2000 return&nbsp;&nbsp;grants<br>
+            --------------------------------------------------------|---------------<br>
+            search &lt;source&gt;|for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;terms&gt;&nbsp;&nbsp;|where&nbsp;&nbsp;&nbsp;&nbsp;&lt;filters&gt;&nbsp;&nbsp;&nbsp;&nbsp;|return &lt;result&gt;
+          </code>
+        </div>
+        <p>A query requesting more complex results might have the form:</p>
+        <div class="code">
+          <code>
+            search&nbsp;&nbsp;grants&nbsp;&nbsp;for&nbsp;"laryngectomy"&nbsp;where&nbsp;start_year=2000&nbsp;return&nbsp;&nbsp;grants[id&nbsp;+&nbsp;title]&nbsp;&nbsp;sort&nbsp;by&nbsp;&nbsp;title&nbsp;&nbsp;return&nbsp;funders&nbsp;return&nbsp;funder_countries&nbsp;return&nbsp;research_orgs&nbsp;as&nbsp;"universities"&nbsp;aggregate&nbsp;funding&nbsp;&nbsp;sort&nbsp;by&nbsp;funding<br>
+            --------------------------------------------------------|------------------------------------------|--------------------------------------|--------------------------------------------------------------------------<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+            search&nbsp;&lt;source&gt;|for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;terms&gt;&nbsp;&nbsp;&nbsp;|where&nbsp;&nbsp;&nbsp;&nbsp;&lt;filters&gt;&nbsp;&nbsp;&nbsp;|return&nbsp;&lt;source&gt;[&lt;fields&gt;]|sort&nbsp;by&nbsp;&lt;field&gt;|return&nbsp;&lt;facet&gt;&nbsp;return&nbsp;&lt;facet&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|return&nbsp;&nbsp;&nbsp;&nbsp;&lt;facet&gt;&nbsp;&nbsp;&nbsp;&nbsp;as&nbsp;&nbsp;&nbsp;&nbsp;&lt;alias&gt;&nbsp;&nbsp;&nbsp;&nbsp;|aggregate&nbsp;&lt;indicator&gt;|sort&nbsp;by&nbsp;&lt;indicator&gt;
+          </code>
+        </div>
+        
+        <h3><mark>search source</mark></h3>
+        <p>A query must begin with the word <mark>search</mark> followed by a source name, i.e. the name of a type of scientific record, such as <mark>grants</mark> or <mark>publications</mark>.</p>
+        <div class="code">
+          <code>
+            search&nbsp;&nbsp;grants<br>
+            ---------------<br>
+            search &lt;source&gt;
+          </code>
+        </div>
+        <p>The source name may be followed by an optional for phrase that provides search terms to rank records against, and/or an optional where phrase that limits the set of records that will be searched. The <mark>for</mark> and <mark>where</mark> phrases may be in either order.</p>
+        <div class="code">
+          <code>
+            search&nbsp;&nbsp;grants&nbsp;&nbsp;for "laryngectomy" where start_year=2000<br>
+            --------------------------------------------------------<br>
+            search &lt;source&gt;|for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;terms&gt;&nbsp;&nbsp;&nbsp;|where&nbsp;&nbsp;&nbsp;&nbsp;&lt;filters&gt;
+          </code>
+        </div><br>
+        <div class="code">
+          <code>
+            search&nbsp;&nbsp;grants&nbsp;&nbsp;where&nbsp;start_year=2000&nbsp;for&nbsp;"laryngectomy"<br>
+            -------------------------------------------------------<br>
+            search&nbsp;&lt;source&gt;|where&nbsp;&nbsp;&nbsp;&nbsp;&lt;filters&gt;&nbsp;&nbsp;&nbsp;|for&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;terms&gt;
+          </code>
+        </div>
+        
+        <h3><mark>return source</mark></h3>
+        <p>The most basic <mark>return</mark> phrase consists of the keyword <mark>return</mark> followed by the name of a record or facet to be returned. This must be the name of the source used in the <mark>search</mark> phrase, or the name of a facet of that source.</p>
+        <div class="code">
+          <code>
+            return&nbsp;&nbsp;grants<br>
+            ---------------<br>
+            return &lt;source&gt;
+          </code>
+        </div><br>
+        <div class="code">
+          <code>
+            return funders<br>
+            --------------<br>
+            return &lt;facet&gt;
+          </code>
+        </div>
+      
+      </section>
+    
+      <section id="FUNCTIONS_SYNTAX" class="main-section">
+        
+        <header>
+          <h1>Functions Syntax</h1>
+        </header>
+        
+        <p>The DSL contains several functions that can be used to perform non-search operations. For example, functions can be used to check if an object exist, or to automatically extract categories from a piece of text.</p>
+        
+        <h2>Basic functions structure</h2>
+        <p>Each function call starts with a function name followed by parenthesis, in between which arguments are placed, separated by commas.</p>
+        <p>For example, calling function <i>extract_grants</i> looks like this:</p>
+        <div class="code">
+          <code>
+            extract_grants&nbsp;&nbsp;("R01HL117329", fundref="100000050")<br>
+            -------------------------------------------------------<br>
+            &lt;function name&gt;:(positional arguments, named arguments)
+          </code>
+        </div>
+        <p>The DSL supports two types of arguments:</p>
+        <ul>
+          <li>
+            <strong>Positional Arguments</strong><br>
+            These are placed without any name. They are just values. These are completely optional and can be replaced by named arguments. Their purpose is mainly to simplify calling functions with just one or two arguments, by omitting the argument name.
+          </li>
+          <li>
+            <strong>Named Arguments</strong><br>
+            Named arguments are always put after positional arguments and their order is not important. In the example above, one could also write extract_grants(fundref=”100000050”, grant_number=”R01HL117329”).
+          </li>
+        </ul>
+        
+      </section>
+    
+      <section id="EXPERT_IDENTIFICATION" class="main-section">
+      
+        <header>
+          <h1>Expert Identification</h1>
+        </header>
+        
+        <p>Expert Identification workflow consists of two steps. In the first step, the user extracts concepts from an abstract. The user can review and modify the list of extracted concepts and then feed it into the actual expert identification workflow.</p>
+        
+        <p>The API Labs contain a <a href="https://api-lab.dimensions.ai/cookbooks/7-researchers/Experts-search-introduction.html" target="_blank">notebook</a> with examples related to the expert identification.</p>
+      
+      </section>
+    
+    </main>
+  
+    <!-- FCC testing script -->
+    <script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
