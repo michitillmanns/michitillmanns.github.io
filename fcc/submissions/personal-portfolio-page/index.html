@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Personal Portfolio Page - FCC Submission - michael-tillmanns.de</title>
+    <style type="text/css">
+      html, body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-family: Poppins, sans-serif;
+        background: #000;
+      }
+      
+      h1, h2, h3, h4, h5, h6, p {
+        margin: 0;
+        padding: 0;
+      }
+      
+      h1 {
+        font-size: 72px;
+      }
+      
+      section {
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      #welcome-section {
+        background: url('./mt.png') no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        box-shadow: inset 0 0 0 2000px rgba(0,0,0,.7);
+      }
+      
+      .project-tile {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: rgba(255,255,255,.1);
+        border-radius: 30px;
+        padding: 20px;
+        margin: 20px;
+      }
+      
+      .project-tile a {
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      header nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0);
+      }
+      
+      header nav ul {
+        list-style-type: none;
+        padding: 0 100px;
+        margin: 0;
+      }
+      
+      header nav ul a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 24px;
+      }
+      
+      header nav ul a li {
+        padding: 20px;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        display: inline-block;
+      }
+      
+      header nav ul a li::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 5px;
+        bottom: 0;
+        background: #fff;
+        transition: width .3s ease;
+      }
+      
+      header nav ul a li:hover::before {
+        width: 200px;
+      }
+      
+      @media only screen and (max-width: 768px) {
+        section {
+          padding: 0 10px;
+          text-align: center;
+          width: calc(100vw - 20px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+  
+    <header>
+      <nav id="navbar">
+        <ul>
+          <a href="#projects"><li>My Projects</li></a>
+          <a id="profile-link" href="https://www.freecodecamp.org/michaeltillmanns" target="_blank"><li>FCC</li></a>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      
+      <section id="welcome-section">
+        <h1>Hi, I Am Michael</h1>
+        <p>I am 19 years old, I come from Germany, and I'm doing an apprentice ship as software engineer at DATEV eG.</p>
+      </section>
+      
+      <section id="projects">
+        <h1>My Projects</h1>
+        <div class="project-tile">
+          <h2>DCUOBot</h2>
+          <p>Fetch DC Universe Online character and league stats.</p>
+          <a href="https://dcuobot.com" target="_blank">Visit now</a>
+        </div>
+      </section>
+      
+    </main>
+  
+    <!-- FCC testing script -->
+    <script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
