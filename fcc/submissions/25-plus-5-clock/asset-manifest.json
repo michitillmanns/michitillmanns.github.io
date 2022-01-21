@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fcc/submissions/25-plus-5-clock/static/css/main.1a8a0596.css",
+    "main.js": "/fcc/submissions/25-plus-5-clock/static/js/main.29e55cef.js",
+    "index.html": "/fcc/submissions/25-plus-5-clock/index.html",
+    "main.1a8a0596.css.map": "/fcc/submissions/25-plus-5-clock/static/css/main.1a8a0596.css.map",
+    "main.29e55cef.js.map": "/fcc/submissions/25-plus-5-clock/static/js/main.29e55cef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1a8a0596.css",
+    "static/js/main.29e55cef.js"
+  ]
+}
